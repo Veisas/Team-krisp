@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def plot_sentiment(results):
+    labels = results['labels']
+    scores = results['scores']
+
+    plt.figure(figsize=(8, 5))
+    ax = sns.barplot(x=labels, y=scores, palette=['green', 'red', 'blue'])
+
+    plt.title('Анализ тональности текста', fontsize=14)
+    plt.ylabel('Вероятность', fontsize=12)
+    plt.ylim(0, 1)
+
+    # Добавление значений на столбцы
+    for p in ax.patches:
+        ax.annotate(f'{p.get_height():.2f}',
+                   (p.get_x() + p.get_width() / 2., p.get_height()),
+                   ha='center', va='center',
+                   xytext=(0, 10),
+                   textcoords='offset points')
+
+    plt.tight_layout()
+    plt.savefig('sentiment_analysis.png')  # Сохранение для отображения в GUI
+    plt.close()
