@@ -20,3 +20,4 @@ git pull
 
 Для скачивание изменений касающихся всех веток и всех комитов:
 git fetch
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
